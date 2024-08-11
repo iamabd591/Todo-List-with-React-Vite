@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+  .main {
+    width: 800px;
+    height: auto;
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e6e6e6;
+    border-radius: 14px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+
+    h1 {
+      width: 100%;
+      font-size: 50px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .inputDiv {
+      width: 100%;
+      // padding: 50px, 50px, 50px, 20px;
+      display: flex;
+      // align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      input {
+        width: 100%;
+        height: 40px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: 1px solid #000;
+        margin-top: 20px;
+      }
+
+      button {
+        width: 120px;
+        height: 45px;
+        padding: 6px;
+        border: none;
+        outline: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        background-color: rgb(75, 4, 126);
+      }
+      .savebtn {
+        margin-left: 5px;
+        background-color: rgb(11, 99, 214);
+      }
+    }
+    .todoList {
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+
+      ul {
+        list-style: none;
+
+        li {
+          width: 100%;
+          padding: 30px;
+          margin-top: 5px;
+          color: #000;
+          font-size: 18px;
+          font-weight: 800;
+          background-color: #ffffff;
+          box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.6);
+
+          div {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              margin-top: 10px;
+              width: 95%;
+            }
+
+            button {
+              width: 100px;
+              height: 40px;
+              border: none;
+              color: #fff;
+              cursor: pointer;
+              font-size: 14px;
+              margin-left: 8px;
+              margin-top: 0px;
+            }
+            .edit {
+              background-color: rgb(2, 7, 100);
+            }
+
+            .delete {
+              background-color: rgb(168, 0, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+}
