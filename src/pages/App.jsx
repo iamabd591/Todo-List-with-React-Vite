@@ -8,20 +8,20 @@ import { MdAddComment, MdDeleteForever, MdCancel } from "react-icons/md";
 function App() {
   const dispatch = useDispatch();
   const [todo, setTodo] = useState("");
-  const [isEdit, setIsEdit] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
+  // const [isEdit, setIsEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState(-1);
   const todos = useSelector((state) => state.todos);
-  const [originalValue, setOriginalValue] = useState("");
+  // const [originalValue, setOriginalValue] = useState("");
 
   const handleInputValue = (e) => {
     setTodo(e.target.value);
   };
 
   const handleEditClick = (index) => {
-    setIsEdit(true);
+    // setIsEdit(true);
     setEditIndex(index);
     setTodo(todos[index]);
-    setOriginalValue(todos[index]);
+    // setOriginalValue(todos[index]);
   };
 
   const handleAdd = () => {
@@ -45,12 +45,14 @@ function App() {
       return;
     }
     dispatch(Update(editIndex, todo, todos));
-    setIsEdit(false);
-    setEditIndex(null);
+    // setIsEdit(false);
+    setEditIndex(-1);
     setTodo("");
   };
+
   const handleCancle = () => {
-    setIsEdit(false);
+    // setIsEdit(false);
+    setEditIndex(-1);
     setTodo("");
     return;
   };
@@ -69,7 +71,7 @@ function App() {
               className="todoInput"
               onChange={handleInputValue}
             />
-            {todo && !isEdit && (
+            {todo && editIndex === -1 && (
               <button id="btn" onClick={handleAdd}>
                 Add Task{" "}
                 <span>
@@ -78,26 +80,30 @@ function App() {
               </button>
             )}
 
-            {isEdit && (
-              <button
-                id="savebtn"
-                className="savebtn"
-                onClick={handleUpdate}
-                disabled={todo === originalValue}
-              >
-                Save{" "}
-                <span>
-                  <FaSave />
-                </span>
-              </button>
-            )}
-            {isEdit && (
-              <button id="savebtn" className="canclebtn" onClick={handleCancle}>
-                Cancle{" "}
-                <span>
-                <MdCancel />
-                </span>
-              </button>
+            {editIndex >= 0 && (
+              <>
+                <button
+                  id="savebtn"
+                  className="savebtn"
+                  onClick={handleUpdate}
+                  disabled={todo === todos[editIndex]}
+                >
+                  Save{" "}
+                  <span>
+                    <FaSave />
+                  </span>
+                </button>
+                <button
+                  id="savebtn"
+                  className="canclebtn"
+                  onClick={handleCancle}
+                >
+                  Cancle{" "}
+                  <span>
+                    <MdCancel />
+                  </span>
+                </button>
+              </>
             )}
           </div>
           <div className="todoList">
