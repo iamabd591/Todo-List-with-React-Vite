@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import { FaEdit, FaSave } from "react-icons/fa";
 import { Add, Delete, Update } from "../redux/action";
 import { useSelector, useDispatch } from "react-redux";
-import { MdAddComment, MdDeleteForever } from "react-icons/md";
+import { MdAddComment, MdDeleteForever, MdCancel } from "react-icons/md";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +49,11 @@ function App() {
     setEditIndex(null);
     setTodo("");
   };
+  const handleCancle = () => {
+    setIsEdit(false);
+    setTodo("");
+    return;
+  };
 
   return (
     <Fragment>
@@ -83,6 +88,14 @@ function App() {
                 Save{" "}
                 <span>
                   <FaSave />
+                </span>
+              </button>
+            )}
+            {isEdit && (
+              <button id="savebtn" className="canclebtn" onClick={handleCancle}>
+                Cancle{" "}
+                <span>
+                <MdCancel />
                 </span>
               </button>
             )}
